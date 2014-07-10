@@ -2,12 +2,8 @@ import java.util.Vector;
 
 PFont font;
 String typing, cursor;
-String[] saved;
-int si = 0;
 
 PGraphics g;
-
-int indent = 25;
 
 int rot = 0;
 
@@ -19,9 +15,6 @@ void setup() {
 	noSmooth();
 
 	typing = "";
-
-	saved = new String[256];
-	saved[si++] = "";
 
 	font = createFont("Nimbus Mono L",16,false);
 
@@ -49,12 +42,6 @@ void draw() {
 
 	g.text(typing+cursor,16,g.height-16);
 
-	for (int i = saved.length - 1; i > 0; i--) {
-		try{
-			g.text(saved[i],16, i*16);
-		} catch (NullPointerException e) {}
-	}
-
 	g.endDraw();
 
 	if ((float)width/(float)height > 1.6){
@@ -73,7 +60,6 @@ void keyPressed() {
   switch (keyCode) {
 
   case ENTER:
-  	saved[si++] = typing;
   	typing = "";
   	break;
   
