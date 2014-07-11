@@ -1,13 +1,13 @@
 PFont font;
 PGraphics g;
 
-int arrowState = 0;
+Arrows arrowState = Arrows.RIGHT;
 
 char[][] code;
 char lastChar = 'M';
 boolean charChanged = false;
 
-int x = 0, y = 0;
+int x = 0, y = 0, xo = 0, yo = 0;
 
 final int 	CHAR_SIZE = 24,
 			B_WIDTH = 960,
@@ -15,7 +15,7 @@ final int 	CHAR_SIZE = 24,
 			CX = B_WIDTH/CHAR_SIZE,
 			CY = B_HEIGHT/CHAR_SIZE;
 
-String allowedCharacters = "abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789!\"#%&/=?`|@£$¥~^*'-_.:,;<>\\";
+String allowedCharacters = " abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789!\"#%&/=?`|@£$¥~^*'-_.:,;<>\\";
 
 void setup() {
 
@@ -29,7 +29,7 @@ void setup() {
 
 	for (int i = 0; i < CY; i++)
 	for (int j = 0; j < CX; j++) {
-		code[j][i] = ("@£${[]}+-_.,;!#¤%&/()=12345678").charAt((int)random(0, 30));
+		code[j][i] = '.';
 	}
 
 	font = createFont("Droid Sans Mono",CHAR_SIZE-1,true);
@@ -49,10 +49,17 @@ void draw() {
 	g.beginDraw();
 	g.background(charChanged?0xff250020:0xff0022aa);
 	// Display everything
-	g.fill(0xff);
+
 
 	for (int i = 0; i < CY; i++)
 	for (int j = 0; j < CX; j++) {
+		if (i==y && j==x) {
+			g.fill(0xff);
+			g.rect((j+xo)*CHAR_SIZE, (i+yo)*CHAR_SIZE, CHAR_SIZE, CHAR_SIZE);
+			g.fill(0x00);
+		} else {
+			g.fill(0xaa);
+		}
 		g.text(code[j][i], j*CHAR_SIZE + 3, CHAR_SIZE + i*CHAR_SIZE - 3);
 	}
 
@@ -73,24 +80,48 @@ void draw() {
 void keyPressed() {
 	if (key == CODED) {
 		switch (keyCode) {
-		case LEFT: 	arrowState |= Arrows.LEFT; break;
-		case RIGHT: arrowState |= Arrows.RIGHT; break;
-		case UP: 	arrowState |= Arrows.UP; break;
-		case DOWN: 	arrowState |= Arrows.DOWN; break;
+		case LEFT: 	arrowState = Arrows.LEFT; break;
+		case RIGHT: arrowState = Arrows.RIGHT; break;
+		case UP: 	arrowState = Arrows.UP; break;
+		case DOWN: 	arrowState = Arrows.DOWN; break;
 		}
 	}
 	if (allowedCharacters.indexOf(key) != -1) {
-		if (charChanged = (lastChar != key)) {
-			lastChar = key;
+
+		charChanged = (lastChar != key);
+		code[x][y] = lastChar = key;
+
+		if (arrowState == Arrows.LEFT) {
+			x = max(x-1, 0);
+			xo = -1;
+			yo = 0;
 		}
+		else if (arrowState == Arrows.RIGHT) {
+			x = min(x+1, CX-1);
+			xo = 1;
+			yo = 0;
+		}
+		else if (arrowState == Arrows.UP) {
+			y = max(y-1, 0);
+			yo = -1;
+			xo = 0;
+		}
+		else if (arrowState == Arrows.DOWN) {
+			y = min(y+1, CY-1);
+			yo = 1;
+			xo = 0;
+		}
+
+		
+		
 	}
 }
 
-void keyReleased() {
+/*void keyReleased() {
 	if (key == CODED) switch (keyCode) {
 	case LEFT: 	arrowState ^= Arrows.LEFT; break;
 	case RIGHT: arrowState ^= Arrows.RIGHT; break;
 	case UP: 	arrowState ^= Arrows.UP; break;
 	case DOWN: 	arrowState ^= Arrows.DOWN; break;
 	}
-}
+}*/
