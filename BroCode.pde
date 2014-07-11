@@ -15,7 +15,7 @@ final int 	CHAR_SIZE = 24,
 			CX = B_WIDTH/CHAR_SIZE,
 			CY = B_HEIGHT/CHAR_SIZE;
 
-String allowedCharacters = "abcdefghijklmnopqrstuvwyxz0123456789!\"#%&/=?`|@£$¥~^*'-_.:,;<>\\";
+String allowedCharacters = "abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789!\"#%&/=?`|@£$¥~^*'-_.:,;<>\\";
 
 void setup() {
 
@@ -47,14 +47,13 @@ void setup() {
 void draw() {
 
 	g.beginDraw();
-
-	g.background(0xff250020);
+	g.background(charChanged?0xff250020:0xff0022aa);
 	// Display everything
 	g.fill(0xff);
 
 	for (int i = 0; i < CY; i++)
 	for (int j = 0; j < CX; j++) {
-		g.text(lastChar, j*CHAR_SIZE + 3, CHAR_SIZE + i*CHAR_SIZE - 3);
+		g.text(code[j][i], j*CHAR_SIZE + 3, CHAR_SIZE + i*CHAR_SIZE - 3);
 	}
 
 	g.endDraw();
@@ -78,9 +77,9 @@ void keyPressed() {
 		case RIGHT: arrowState |= Arrows.RIGHT; break;
 		case UP: 	arrowState |= Arrows.UP; break;
 		case DOWN: 	arrowState |= Arrows.DOWN; break;
-		default : return;	
 		}
-	} else if (allowedCharacters.indexOf(key) != -1) {
+	}
+	if (allowedCharacters.indexOf(key) != -1) {
 		if (charChanged = (lastChar != key)) {
 			lastChar = key;
 		}

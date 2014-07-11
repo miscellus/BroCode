@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"char",
+				"charChanged"
+			],
+			[
+				"Ch",
+				"CHAR_SIZE"
+			],
+			[
+				"L",
+				"LEFT"
+			],
+			[
+				"arr",
+				"arrowState"
+			],
+			[
+				"key",
+				"key	keyCode"
+			],
+			[
 				"qu",
 				"Queue"
 			],
@@ -63,15 +83,15 @@
 			"file": "BroCode.pde",
 			"settings":
 			{
-				"buffer_size": 1090,
+				"buffer_size": 1944,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/jakob/.bashrc",
+			"file": "Arrows.java",
 			"settings":
 			{
-				"buffer_size": 3698,
+				"buffer_size": 95,
 				"line_ending": "Unix"
 			}
 		}
@@ -169,12 +189,13 @@
 	},
 	"file_history":
 	[
+		"/home/jakob/Documents/Processing Sketches/BroCode/arrows.java",
 		"/home/jakob/Documents/Processing Sketches/BroCode/.gitignore",
+		"/home/jakob/.bashrc",
 		"/home/jakob/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/jakob/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/jakob/Documents/Processing Sketches/test/test.pde",
 		"/home/jakob/Documents/Java projects/brocode.java",
-		"/home/jakob/.bashrc",
 		"/home/jakob/Documents/Java projects/asf.java",
 		"/home/jakob/Documents/Java projects/DaLang.java",
 		"/home/jakob/Documents/crap.csv",
@@ -211,6 +232,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"|",
+			"LEFT",
+			"16",
+			"true",
+			"i",
 			"4",
 			"y",
 			"x",
@@ -238,7 +264,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -247,15 +273,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1090,
+						"buffer_size": 1944,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								75,
-								75
+								1688,
+								1688
 							]
 						],
 						"settings":
@@ -263,40 +289,38 @@
 							"syntax": "Packages/Processing/Syntax/Processing.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1650.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/home/jakob/.bashrc",
+					"file": "Arrows.java",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3698,
+						"buffer_size": 95,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3698,
-								3698
+								95,
+								95
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Java/Java.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2520.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -377,8 +401,8 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
-	"side_bar_width": 314.0,
+	"side_bar_visible": false,
+	"side_bar_width": 176.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
